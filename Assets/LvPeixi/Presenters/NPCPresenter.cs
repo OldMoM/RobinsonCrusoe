@@ -15,7 +15,7 @@ public class NPCPresenter : MonoBehaviour,IInteractableNPC
     }
     public void EndInteractWithPlayer()
     {
-        GameEvents.Sigton.onInteractEnd();
+        Mediator.Sigton.EndInteract();
     }
     public void OnDialogStart()
     {

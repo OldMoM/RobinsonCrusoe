@@ -12,9 +12,8 @@ public class CaoCollector : MonoBehaviour,IInteractableResourceCollector
     public string InteractObjectType { get => interactObjectType; }
     public void EndInteractWithPlayer()
     {
-        GameEvents.Sigton.onInteractEnd();
+        Mediator.Sigton.EndInteract();
     }
-
     public void OnResourceCollectEnd()
     {
         resourceAccount = 0;
@@ -29,6 +28,7 @@ public class CaoCollector : MonoBehaviour,IInteractableResourceCollector
     {
         if (resourceAccount > 0)
         {
+            //向Mediator通知要进行的互动行为
             Mediator.Sigton.StartResourceCollect(this);
         }
     }

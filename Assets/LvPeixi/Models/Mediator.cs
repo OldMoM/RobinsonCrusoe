@@ -40,6 +40,10 @@ public class Mediator : MonoBehaviour
             }
         };
     }
+    /// <summary>
+    /// 请求开始对话互动
+    /// </summary>
+    /// <param name="npc"></param>
     public void StartDialog(IInteractableNPC npc)
     {
      
@@ -79,10 +83,11 @@ public class Mediator : MonoBehaviour
         {
             GameEvents.Sigton.onInteractEnd.Invoke();
         });
-
-
     }
-
+    /// <summary>
+    /// 请求开始收集互动
+    /// </summary>
+    /// <param name="collector"></param>
     public void StartResourceCollect(IInteractableResourceCollector collector)
     {
         print("enter collect trigger");
@@ -108,5 +113,12 @@ public class Mediator : MonoBehaviour
             waitForKeyboardInteractSingle.Dispose();
             GUIEvents.Singleton.BroadcastInteractTipMessage.OnNext("");
         };
+    }
+    /// <summary>
+    /// 结束互动
+    /// </summary>
+    public void EndInteract()
+    {
+        GameEvents.Sigton.onInteractEnd();
     }
 }
